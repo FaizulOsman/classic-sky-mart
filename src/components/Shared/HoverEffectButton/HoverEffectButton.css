@@ -1,0 +1,31 @@
+.btn_regular {
+  color: #f97316 !important;
+  background: transparent !important;
+  border: 1px solid #f97316 !important;
+  position: relative;
+  z-index: 22;
+  overflow: hidden;
+}
+
+.btn_regular:hover {
+  color: #fff !important;
+  border: 1px solid transparent !important;
+  background-color: transparent !important;
+}
+
+.btn_regular::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0) rotate(180deg);
+  background: #f97316;
+  z-index: -1;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+.btn_regular:hover:after {
+  transform: translate(-50%, -50%) scale(1) rotate(0);
+}
