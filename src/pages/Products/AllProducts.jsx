@@ -13,7 +13,6 @@ const AllProducts = () => {
     page,
     searchTerm,
   });
-  console.log(getAllProduct);
 
   return (
     <div className=" bg-[#fef5ef] py-20">
@@ -25,7 +24,7 @@ const AllProducts = () => {
           ------ Updated with the latest products
         </p>
         {getAllProduct?.data?.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {getAllProduct?.data?.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}
