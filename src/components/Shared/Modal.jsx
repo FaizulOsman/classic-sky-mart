@@ -7,7 +7,9 @@ const Modal = ({ styles, Button, data, modalBody }) => {
         {Button}
       </button>
       <dialog id={data?.id} className="modal">
-        <div className="p-4 bg-[#1d1836]">{modalBody}</div>
+        <div className="p-4 bg-white border border-orange-500 rounded-md text-black">
+          {modalBody}
+        </div>
         {/* <form method="dialog">
           <button>close</button>
         </form> */}

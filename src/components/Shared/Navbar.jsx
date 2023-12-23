@@ -218,7 +218,7 @@ const Navbar = () => {
                           <div className="py-1 text-orange-500">
                             {myProfile?.email ? (
                               <Link
-                                to="#"
+                                to="/login"
                                 onClick={() => handleSignOut()}
                                 className="px-4 py-2 hover:bg-gray-200 flex justify-between w-full"
                               >

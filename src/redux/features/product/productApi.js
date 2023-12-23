@@ -27,9 +27,10 @@ const productApi = api.injectEndpoints({
     }),
 
     deleteSingleProduct: builder.mutation({
-      query: ({ id }) => ({
+      query: ({ id, headers }) => ({
         url: `/products/${id}`,
         method: "DELETE",
+        headers: headers,
       }),
       invalidatesTags: ["classic-it"],
     }),
