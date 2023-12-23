@@ -5,6 +5,7 @@ import MainLayout from "../layouts/MainLayout";
 import AllProducts from "../pages/Products/AllProducts";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import CreateProduct from "../pages/Products/CreateProduct";
 
 const Routers = () => {
   return (
@@ -15,6 +16,7 @@ const Routers = () => {
           <Route path="/products" element={<AllProducts />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/products/create-product" element={<CreateProduct />} />
         </Route>
       </Routes>
     </BrowserRouter>

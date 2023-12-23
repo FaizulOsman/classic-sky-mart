@@ -3,10 +3,11 @@ import api from "../../api/apiSlice";
 const productApi = api.injectEndpoints({
   endpoints: (builder) => ({
     createProduct: builder.mutation({
-      query: (data) => ({
+      query: ({ data, headers }) => ({
         url: `/products`,
         method: "POST",
         body: data,
+        headers: headers,
       }),
       invalidatesTags: ["classic-it"],
     }),

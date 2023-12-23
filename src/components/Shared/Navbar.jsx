@@ -98,7 +98,7 @@ const Navbar = () => {
                     <FaCartFlatbedSuitcase /> Products
                   </Link>
                   <Link
-                    to="#"
+                    to="/products/create-product"
                     className="flex items-center justify-center text-white hover:text-gray-700 rounded-md"
                   >
                     <FaCartPlus className="w-5 h-5" />
