@@ -1,6 +1,6 @@
-import apiSlice from "../api/apiSlice";
+import api from "../../api/apiSlice";
 
-const userApi = apiSlice.injectEndpoints({
+const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
     signUp: builder.mutation({
       query: (data) => ({
