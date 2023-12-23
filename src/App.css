@@ -1,3 +1,19 @@
 .App {
   /* background-color: #080925; */
 }
+
+/* ################### Scroll Bar ################### */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+/* ::-webkit-scrollbar-track {
+  background: #b0c1f5;
+} */
+::-webkit-scrollbar-thumb {
+  background: #ff2e59;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #08ac17;
+}
