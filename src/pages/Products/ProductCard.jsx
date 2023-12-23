@@ -63,7 +63,7 @@ const ProductCard = ({ product }) => {
           alt={product?.title}
         />
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center gap-4">
         <p className="text-[#04c5ff] text-xl font-semibold">{product?.title}</p>
         {getMyProfile?.data?.role === "admin" && (
           <div>
@@ -126,11 +126,41 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
       </div>
-      <Link to={`/products/${product?.id}`}>
-        <button className="bg-orange-500 hover:bg-white text-white hover:text-orange-500 hover:border hover:border-orange-500 font-bold py-2 px-4 rounded w-full">
-          Quick View
-        </button>
-      </Link>
+      <button
+        className="bg-orange-500 hover:bg-white text-white hover:text-orange-500 hover:border hover:border-orange-500 font-bold py-2 px-4 rounded w-full"
+        onClick={() =>
+          document.getElementById(`my_modal_${product?.id}`).showModal()
+        }
+      >
+        Quick View
+      </button>
+      <dialog id={`my_modal_${product?.id}`} className="modal">
+        <div className="modal-box">
+          <div>
+            <img
+              className="h-64 mx-auto "
+              src={product?.image}
+              alt={product?.title}
+            />
+          </div>
+          <div className="py-5">
+            <h4 className="text-[#04c5ff] text-xl font-semibold">
+              {product?.title}
+            </h4>
+            <h4 className="text-lg font-semibold mt-2">Variation:</h4>
+            <p className="pl-4">Color: {product?.variation?.color}</p>
+            <p className="pl-4">Size: {product?.variation?.size}</p>
+          </div>
+          <div className="flex justify-center">
+            <span onClick={() => handleAddToCart()}>
+              <HoverEffectButton text="Add To Cart" />
+            </span>
+          </div>
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
   );
 };
