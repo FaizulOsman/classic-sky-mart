@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TeamLogo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
-import { FaCartFlatbedSuitcase } from "react-icons/fa6";
+import { FaCartFlatbedSuitcase, FaUsers } from "react-icons/fa6";
 import { FaCartPlus, FaShoppingCart } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useGetMyProfileQuery } from "../../redux/features/user/userApi";
@@ -82,7 +82,7 @@ const Navbar = () => {
             </div>
             {
               <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-3">
+                <div className="flex space-x-5">
                   <Link
                     to="/"
                     className="flex gap-2 items-center  text-white hover:text-gray-700 rounded-md py-2 text-sm font-medium"
@@ -96,6 +96,13 @@ const Navbar = () => {
                     aria-current="page"
                   >
                     <FaCartFlatbedSuitcase /> Products
+                  </Link>
+                  <Link
+                    to="/users"
+                    className="flex gap-2 items-center  text-white hover:text-gray-700 rounded-md py-2 text-sm font-medium"
+                    aria-current="page"
+                  >
+                    <FaUsers /> Users
                   </Link>
                   <Link
                     to="/products/create-product"
@@ -274,7 +281,14 @@ const Navbar = () => {
               <FaCartFlatbedSuitcase /> Products
             </Link>
             <Link
-              to="/dashboard/products/create-product"
+              to="/users"
+              className="flex gap-2 items-center hover:bg-orange-400 text-white hover:text-white rounded-md px-3 py-2 text-base font-medium"
+              aria-current="page"
+            >
+              <FaUsers /> Users
+            </Link>
+            <Link
+              to="/products/create-product"
               className="flex gap-2 items-center text-white hover:bg-orange-400 hover:text-white rounded-md px-3 py-2 text-base font-medium"
             >
               <FaCartPlus /> Create Product

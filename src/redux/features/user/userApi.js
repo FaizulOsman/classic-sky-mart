@@ -27,8 +27,8 @@ const userApi = api.injectEndpoints({
       invalidatesTags: ["classic-it"],
     }),
     getAllUsers: builder.query({
-      query: ({ headers }) => ({
-        url: `/users`,
+      query: ({ limit, page, searchTerm, headers }) => ({
+        url: `/users?searchTerm=${searchTerm}&limit=${limit}&page=${page}`,
         headers: headers,
       }),
       providesTags: ["classic-it"],

@@ -6,6 +6,7 @@ import AllProducts from "../pages/Products/AllProducts";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import CreateProduct from "../pages/Products/CreateProduct";
+import AllUsers from "../pages/Users/AllUsers";
 
 const Routers = () => {
   return (
@@ -17,6 +18,7 @@ const Routers = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/products/create-product" element={<CreateProduct />} />
+          <Route path="/users" element={<AllUsers />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -24,25 +24,23 @@ const Table = ({
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="bg-gray-100 text-gray-400 flex overflow-hidden text-sm">
+      <div className="flex overflow-hidden text-sm">
         <div className="flex-grow overflow-hidden h-full flex flex-col">
           <div className="flex-grow flex overflow-x-hidden">
-            <div className="flex-grow bg-[#080925] overflow-y-auto">
+            <div className="flex-grow overflow-y-auto">
               <div className="sm:py-7 py-4">
                 <div className="flex w-full items-center mb-7">
-                  <div className="flex items-center text-lg sm:text-2xl z-40 text-green-500 border-l-4 pl-0 sm:pl-2">
+                  <div className="flex items-center text-lg sm:text-2xl z-40 text-orange-500 font-semibold border-l-4 border-orange-500 pl-2">
                     {tableTitle}
                   </div>
                   <div className="ml-auto text-xs inline-flex items-center">
-                    <span className="mr-3 hidden sm:inline-block">
-                      Limit {limit}
-                    </span>
+                    <span className="mr-3">Limit {limit}</span>
                     <button
                       onClick={() => setLimit(limit - 1)}
-                      className={`mr-3 inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border border-gray-500 text-gray-500 ${
+                      className={`mr-3 inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border border-orange-500 ${
                         limit === 1
                           ? "opacity-50 cursor-not-allowed"
-                          : "border-gray-500 text-gray-500"
+                          : "border-orange-500"
                       } leading-none`}
                       disabled={limit === 1}
                     >
@@ -50,10 +48,10 @@ const Table = ({
                     </button>
                     <button
                       onClick={() => setLimit(limit + 1)}
-                      className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border border-gray-500 text-gray-500 ${
+                      className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border border-orange-500 ${
                         page === totalPage
                           ? "opacity-50 cursor-not-allowed"
-                          : "border-gray-500 text-gray-500"
+                          : "border-orange-500"
                       } leading-none`}
                       disabled={limit === parseInt(meta?.total)}
                     >
@@ -66,10 +64,10 @@ const Table = ({
                     {allData?.length > 0 ? (
                       <table className="w-full text-left">
                         <thead>
-                          <tr className="font-bold text-blue-500">
+                          <tr className="font-bold text-orange-500">
                             {tableHeadData?.map((data) => data)}
                           </tr>
-                          <tr className="font-normal border-b border-gray-800"></tr>
+                          <tr className="font-normal border-b border-orange-600"></tr>
                         </thead>
                         <tbody>{tableBodyData?.map((data) => data)}</tbody>
                       </table>
@@ -106,7 +104,7 @@ const Table = ({
                         onClick={() => handlePageChange(index + 1)}
                         className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border border-gray-500 text-gray-500 ${
                           page === index + 1
-                            ? "bg-green-600 text-white border-green-500"
+                            ? "bg-orange-600 text-white border-orange-500"
                             : "border-gray-500 text-gray-500"
                         } leading-none`}
                       >
@@ -123,7 +121,7 @@ const Table = ({
                           <button
                             key={index}
                             onClick={() => handlePageChange(index + 1)}
-                            className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border bg-green-600 text-white border-green-500`}
+                            className={`inline-flex items-center h-6 w-6 sm:h-8 sm:w-8 justify-center rounded-md shadow border bg-orange-600 text-white border-orange-500`}
                           >
                             {index}
                           </button>
