@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import HoverEffectButton from "../../components/Shared/HoverEffectButton/HoverEffectButton";
-import { Link } from "react-router-dom";
 import { useCreateAddToCartMutation } from "../../redux/features/addToCart/addToCartApi";
 import { useGetMyProfileQuery } from "../../redux/features/user/userApi";
 import toast from "react-hot-toast";
