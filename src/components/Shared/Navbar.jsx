@@ -3,11 +3,15 @@ import TeamLogo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaCartFlatbedSuitcase } from "react-icons/fa6";
-import { FaCartPlus } from "react-icons/fa";
+import { FaCartPlus, FaShoppingCart } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useGetMyProfileQuery } from "../../redux/features/user/userApi";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useGetAllAddToCartQuery } from "../../redux/features/addToCart/addToCartApi";
+import {
+  useDeleteSingleAddToCartMutation,
+  useGetAllAddToCartQuery,
+} from "../../redux/features/addToCart/addToCartApi";
+import { ImCross } from "react-icons/im";
 
 const Navbar = () => {
   const [myProfile, setMyProfile] = useState({});
@@ -22,6 +26,8 @@ const Navbar = () => {
 
   const { data: getMyProfile } = useGetMyProfileQuery({ headers });
   const { data: getAllAddToCart } = useGetAllAddToCartQuery({ headers });
+  const [deleteSingleAddToCart, { isSuccess, isError }] =
+    useDeleteSingleAddToCartMutation({});
 
   const handleSignOut = () => {
     localStorage.removeItem("user-info");
@@ -30,9 +36,22 @@ const Navbar = () => {
     setMyProfile({});
   };
 
+  const handleRemoveFromCart = (id) => {
+    deleteSingleAddToCart({ id, headers });
+  };
+
   useEffect(() => {
     setMyProfile(getMyProfile?.data);
   }, [getMyProfile?.data]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Successfully removed from cart!");
+    }
+    if (isError) {
+      toast.error("Something went wrong!");
+    }
+  }, [isSuccess, isError]);
 
   return (
     <nav className="bg-orange-500">
@@ -48,7 +67,6 @@ const Navbar = () => {
             >
               <span className="absolute -inset-0.5"></span>
               <span className="sr-only">Open main menu</span>
-
               <GiHamburgerMenu className="text-white" />
             </button>
           </div>
@@ -67,32 +85,93 @@ const Navbar = () => {
                 <div className="flex space-x-3">
                   <Link
                     to="/"
-                    className="flex gap-2 items-center  text-white hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium"
+                    className="flex gap-2 items-center  text-white hover:text-gray-700 rounded-md py-2 text-sm font-medium"
                     aria-current="page"
                   >
                     <IoHomeOutline /> Home
                   </Link>
                   <Link
                     to="/products"
-                    className="flex gap-2 items-center  text-white hover:text-gray-700 rounded-md px-3 py-2 text-sm font-medium"
+                    className="flex gap-2 items-center  text-white hover:text-gray-700 rounded-md py-2 text-sm font-medium"
                     aria-current="page"
                   >
                     <FaCartFlatbedSuitcase /> Products
                   </Link>
                   <Link
-                    to="/dashboard/cart"
-                    className="relative flex items-center text-white rounded-md px-3 py-2 "
+                    to="#"
+                    className="flex items-center justify-center text-white hover:text-gray-700 rounded-md"
                   >
                     <FaCartPlus className="w-5 h-5" />
-                    <span className="absolute top-0 right-0 bg-orange-700 text-xs text-white w-5 h-5 rounded-full flex justify-center items-center">
-                      {getAllAddToCart?.data?.length}
-                    </span>
                   </Link>
+                  <div className="drawer drawer-end">
+                    <input
+                      id="my-drawer-4"
+                      type="checkbox"
+                      className="drawer-toggle"
+                    />
+                    <div className="drawer-content">
+                      <label htmlFor="my-drawer-4" className="drawer-button">
+                        <div className="relative flex items-center text-white hover:text-gray-700 cursor-pointer rounded-md px-3 py-2">
+                          <FaShoppingCart className="w-5 h-5" />
+                          <span className="absolute top-0 right-0 bg-orange-700 text-xs text-white w-5 h-5 rounded-full flex justify-center items-center">
+                            {getAllAddToCart?.data?.length}
+                          </span>
+                        </div>
+                      </label>
+                    </div>
+                    <div className="drawer-side">
+                      <label
+                        htmlFor="my-drawer-4"
+                        aria-label="close sidebar"
+                        className="drawer-overlay"
+                      ></label>
+                      <ul className="w-52 min-h-full bg-white z-50 text-base-content">
+                        <div className="h-12 bg-[#1976d2] flex items-center px-4">
+                          <p className="text-white font-semibold">My Carts</p>
+                        </div>
+                        {getAllAddToCart?.data?.length > 0 ? (
+                          <div className="p-4 flex flex-col gap-2">
+                            {getAllAddToCart?.data?.map((data, index) => (
+                              <div
+                                key={index}
+                                className="border border-[#ff7004] rounded p-2"
+                              >
+                                <div className="flex justify-between items-center gap-4">
+                                  <img
+                                    src={data?.image}
+                                    className="w-10 h-14"
+                                    alt={data?.title}
+                                  />
+                                  <div>
+                                    <h4 className="text-xs font-semibold">
+                                      {data?.title}
+                                    </h4>
+                                    <span className="text-xs flex justify-end text-[#ff2e59]">
+                                      <ImCross
+                                        onClick={() =>
+                                          handleRemoveFromCart(data?.id)
+                                        }
+                                        className="cursor-pointer"
+                                      />
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="flex items-center justify-center h-20">
+                            <h4 className="text-red-400">No data found</h4>
+                          </div>
+                        )}
+                      </ul>
+                    </div>
+                  </div>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center justify-center">
-                      <div className="dropdown dropdown-end">
+                      <div className="dropdown static dropdown-end">
                         <div tabIndex={0} role="button">
-                          <span className="rounded-md shadow-sm">
+                          <span className="rounded-md">
                             <button
                               className="transition duration-150 ease-in-out"
                               type="button"
