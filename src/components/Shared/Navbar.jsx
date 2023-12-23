@@ -123,7 +123,9 @@ const Navbar = () => {
                         <div className="relative flex items-center text-white hover:text-gray-700 cursor-pointer rounded-md px-3 py-2">
                           <FaShoppingCart className="w-5 h-5" />
                           <span className="absolute top-0 right-0 bg-orange-700 text-xs text-white w-5 h-5 rounded-full flex justify-center items-center">
-                            {getAllAddToCart?.data?.length}
+                            {getAllAddToCart?.data?.length > 0
+                              ? getAllAddToCart?.data?.length
+                              : 0}
                           </span>
                         </div>
                       </label>
