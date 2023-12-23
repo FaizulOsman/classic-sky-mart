@@ -97,13 +97,15 @@ const Navbar = () => {
                   >
                     <FaCartFlatbedSuitcase /> Products
                   </Link>
-                  <Link
-                    to="/users"
-                    className="flex gap-2 items-center  text-white hover:text-gray-700 rounded-md py-2 text-sm font-medium"
-                    aria-current="page"
-                  >
-                    <FaUsers /> Users
-                  </Link>
+                  {myProfile?.role === "admin" && (
+                    <Link
+                      to="/users"
+                      className="flex gap-2 items-center  text-white hover:text-gray-700 rounded-md py-2 text-sm font-medium"
+                      aria-current="page"
+                    >
+                      <FaUsers /> Users
+                    </Link>
+                  )}
                   <Link
                     to="/products/create-product"
                     className="flex items-center justify-center text-white hover:text-gray-700 rounded-md"
@@ -280,13 +282,15 @@ const Navbar = () => {
             >
               <FaCartFlatbedSuitcase /> Products
             </Link>
-            <Link
-              to="/users"
-              className="flex gap-2 items-center hover:bg-orange-400 text-white hover:text-white rounded-md px-3 py-2 text-base font-medium"
-              aria-current="page"
-            >
-              <FaUsers /> Users
-            </Link>
+            {myProfile?.role === "admin" && (
+              <Link
+                to="/users"
+                className="flex gap-2 items-center hover:bg-orange-400 text-white hover:text-white rounded-md px-3 py-2 text-base font-medium"
+                aria-current="page"
+              >
+                <FaUsers /> Users
+              </Link>
+            )}
             <Link
               to="/products/create-product"
               className="flex gap-2 items-center text-white hover:bg-orange-400 hover:text-white rounded-md px-3 py-2 text-base font-medium"

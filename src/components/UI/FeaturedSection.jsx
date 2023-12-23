@@ -12,11 +12,11 @@ const FeaturedSection = () => {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "top right",
               }}
-              className="bg-[#fef5ef] p-4 rounded-lg shadow-md"
+              className="bg-[#fef5ef] p-4 rounded-lg"
             >
               <h2 className="text-xl font-bold mb-2">Best New</h2>
               <h2 className="text-orange-500 text-2xl font-bold mb-4">
-                Men's Urban Long T-shirt
+                Men's Urban <br /> Long T-shirt
               </h2>
               <button className="btn_regular bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
                 Shop Now
@@ -30,11 +30,12 @@ const FeaturedSection = () => {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "top right",
               }}
-              className="bg-gray-200 p-4 rounded-lg shadow-md"
+              className="bg-gray-200 p-4 rounded-lg"
             >
               <h2 className="text-xl font-bold mb-2">Best New</h2>
               <h2 className="text-orange-500 text-2xl font-bold mb-4">
-                Fabrilife mens premium T-shirt
+                Fabrilife mens
+                <br /> premium T-shirt
               </h2>
               <button className="btn_regular bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
                 Shop Now
@@ -48,11 +49,12 @@ const FeaturedSection = () => {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "top right",
               }}
-              className="bg-[#fef5ef] p-4 rounded-lg shadow-md"
+              className="bg-[#fef5ef] p-4 rounded-lg"
             >
               <h2 className="text-xl font-bold mb-2">Best New</h2>
               <h2 className="text-orange-500 text-2xl font-bold mb-4">
-                Men's Long Sleeve T-shirt
+                Men's Long
+                <br /> Sleeve T-shirt
               </h2>
               <button className="btn_regular bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
                 Shop Now
