@@ -3,17 +3,19 @@ import api from "../../api/apiSlice";
 const addToCartApi = api.injectEndpoints({
   endpoints: (builder) => ({
     createAddToCart: builder.mutation({
-      query: (data) => ({
+      query: ({ data, headers }) => ({
         url: `/addToCart/create-addToCart`,
         method: "POST",
         body: data,
+        headers: headers,
       }),
       invalidatesTags: ["classic-it"],
     }),
 
     getAllAddToCart: builder.query({
-      query: ({ limit, page, searchTerm }) => ({
-        url: `/addToCart?searchTerm=${searchTerm}&limit=${limit}&page=${page}`,
+      query: ({ headers }) => ({
+        url: `/addToCart`,
+        headers: headers,
       }),
       providesTags: ["classic-it"],
     }),

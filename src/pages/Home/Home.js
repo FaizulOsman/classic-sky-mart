@@ -4,7 +4,6 @@ import AllProducts from "../Products/AllProducts";
 const Home = () => {
   return (
     <div>
-      Home
       <AllProducts />
     </div>
   );

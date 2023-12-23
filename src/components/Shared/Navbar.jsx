@@ -7,6 +7,7 @@ import { FaCartPlus } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useGetMyProfileQuery } from "../../redux/features/user/userApi";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useGetAllAddToCartQuery } from "../../redux/features/addToCart/addToCartApi";
 
 const Navbar = () => {
   const [myProfile, setMyProfile] = useState({});
@@ -20,7 +21,7 @@ const Navbar = () => {
   };
 
   const { data: getMyProfile } = useGetMyProfileQuery({ headers });
-  console.log(myProfile);
+  const { data: getAllAddToCart } = useGetAllAddToCartQuery({ headers });
 
   const handleSignOut = () => {
     localStorage.removeItem("user-info");
@@ -79,10 +80,13 @@ const Navbar = () => {
                     <FaCartFlatbedSuitcase /> Products
                   </Link>
                   <Link
-                    to="/dashboard/products/create-product"
-                    className="flex items-center text-white rounded-md px-3 py-2 "
+                    to="/dashboard/cart"
+                    className="relative flex items-center text-white rounded-md px-3 py-2 "
                   >
                     <FaCartPlus className="w-5 h-5" />
+                    <span className="absolute top-0 right-0 bg-orange-700 text-xs text-white w-5 h-5 rounded-full flex justify-center items-center">
+                      {getAllAddToCart?.data?.length}
+                    </span>
                   </Link>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center justify-center">
