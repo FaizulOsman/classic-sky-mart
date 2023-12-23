@@ -7,7 +7,7 @@ export const api = createApi({
     // baseUrl: "http://localhost:5000/api/v1",
     baseUrl: "https://classic-sky-mart-server.vercel.app/api/v1",
   }),
-  tagTypes: ["user"],
+  tagTypes: ["classic-it"],
   endpoints: () => ({}),
 });
 
