@@ -106,12 +106,14 @@ const Navbar = () => {
                       <FaUsers /> Users
                     </Link>
                   )}
-                  <Link
-                    to="/products/create-product"
-                    className="flex items-center justify-center text-white hover:text-gray-700 rounded-md"
-                  >
-                    <FaCartPlus className="w-5 h-5" />
-                  </Link>
+                  {myProfile?.role === "admin" && (
+                    <Link
+                      to="/products/create-product"
+                      className="flex items-center justify-center text-white hover:text-gray-700 rounded-md"
+                    >
+                      <FaCartPlus className="w-5 h-5" />
+                    </Link>
+                  )}
                   <div className="drawer drawer-end">
                     <input
                       id="my-drawer-4"
@@ -228,13 +230,13 @@ const Navbar = () => {
                           </div>
                           <div className="py-1 text-orange-500">
                             {myProfile?.email ? (
-                              <Link
-                                to="/login"
+                              <a
+                                href="/login"
                                 onClick={() => handleSignOut()}
                                 className="px-4 py-2 hover:bg-gray-200 flex justify-between w-full"
                               >
                                 Logout
-                              </Link>
+                              </a>
                             ) : (
                               <Link
                                 to="/login"
@@ -258,7 +260,7 @@ const Navbar = () => {
       {showDropdown && (
         <div className="sm:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            <div className="px-4 py-3 text-gray-700">
+            <div className="px-4 py-3 text-gray-700 font-semibold">
               {myProfile?.email ? (
                 <>
                   <p className="text-sm leading-5">Signed in as</p>
@@ -293,27 +295,29 @@ const Navbar = () => {
                 <FaUsers /> Users
               </Link>
             )}
-            <Link
-              to="/products/create-product"
-              className="flex gap-2 items-center text-white hover:bg-orange-400 hover:text-white rounded-md px-3 py-2 text-base font-medium"
-            >
-              <FaCartPlus /> Create Product
-            </Link>
+            {myProfile?.role === "admin" && (
+              <Link
+                to="/products/create-product"
+                className="flex gap-2 items-center text-white hover:bg-orange-400 hover:text-white rounded-md px-3 py-2 text-base font-medium"
+              >
+                <FaCartPlus /> Create Product
+              </Link>
+            )}
             <div>
               {myProfile?.email ? (
                 <>
-                  <Link
-                    to="/login"
+                  <a
+                    href="/login"
                     onClick={() => handleSignOut()}
                     className="flex gap-2 items-center text-gray-700 hover:bg-orange-400 hover:text-white rounded-md px-3 py-2 text-base font-medium"
                   >
                     Logout
-                  </Link>
+                  </a>
                 </>
               ) : (
                 <Link
                   to="/login"
-                  className="flex gap-2 items-center text-orange-400 hover:bg-orange-400 hover:text-white rounded-md px-3 py-2 text-base font-medium"
+                  className="flex gap-2 items-center text-gray-800 hover:bg-orange-400 hover:text-white rounded-md px-3 py-2 text-base font-medium"
                 >
                   Login
                 </Link>

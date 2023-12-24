@@ -48,7 +48,7 @@ const SignUp = () => {
   }, [isLoading, navigate, isSuccess, error, isError, data]);
 
   return (
-    <div className="py-5 relative flex flex-col justify-center min-h-screen overflow-hidden">
+    <div className="py-5 flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="mx-auto border rounded-md shadow-lg p-8 flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <h1 className="text-3xl font-semibold text-center text-orange-500">
           Sign Up

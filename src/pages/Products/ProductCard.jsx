@@ -28,7 +28,11 @@ const ProductCard = ({ product }) => {
       productId: product?.id,
       email: getMyProfile?.data?.email,
     };
-    createAddToCart({ data, headers });
+    if (!!getMyProfile?.data?.email) {
+      createAddToCart({ data, headers });
+    } else {
+      toast.error("Please login first!");
+    }
   };
 
   const handleDeleteProduct = (data) => {
